@@ -111,12 +111,18 @@ public class Window extends Application {
 
         Button clearButton = new Button("Clear");
         controllers.add(clearButton, 3, 1);
+        clearButton.setDisable(true);
 
-        Button doButton = new Button("Do");
+        Button doButton = new Button("Step forward");
         controllers.add(doButton, 4, 0);
+        doButton.setDisable(true);
 
-        Button select1 = new Button("select");
-        Button select2 = new Button("select");
+        Button undoButton = new Button("Step back");
+        controllers.add(undoButton, 4, 1);
+        undoButton.setDisable(true);
+
+        Button select1 = new Button("✔");
+        Button select2 = new Button("✔");
         controllers.add(select1, 2, 0);
         controllers.add(select2, 2, 1);
         //Actions for select
@@ -142,6 +148,9 @@ public class Window extends Application {
                 if (!textAreaPointsCount.isDisable()){
                     int pointsCount = Integer.parseInt(textAreaPointsCount.getText());
                     Engine.showPrimaryVector(pointsCount);
+                    doButton.setDisable(false);
+                    undoButton.setDisable(false);
+                    clearButton.setDisable(false);
                 }
             }
         });
@@ -149,6 +158,9 @@ public class Window extends Application {
             @Override
             public void handle(MouseEvent event) {
                 clear();
+                doButton.setDisable(true);
+                undoButton.setDisable(true);
+                clearButton.setDisable(true);
             }
         });
         doButton.setOnMouseClicked(new EventHandler<MouseEvent>() {

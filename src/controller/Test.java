@@ -5,10 +5,7 @@ import model.Matrix;
 import model.Point;
 
 /**
- * Created by Стрижик on 09.06.2016.
+ * Created by пїЅпїЅпїЅпїЅпїЅпїЅпїЅ on 09.06.2016.
  */
 public class Test {
-    public static void main(String[] args) {
-        Engine.getInstance().generatePBF();
-    }
 }

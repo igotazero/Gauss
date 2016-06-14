@@ -22,17 +22,6 @@ public class Engine {
         Window.run(args);
     }
 
-    public void generatePBF(){
-        int size = complexVector.length();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                double re = Math.cos(2 * Math.PI * i * j / size);
-                double im = Math.sin(2 * Math.PI * i * j / size);
-                plodBolnoyFantazii.set(i, j, new Complex((int)re, (int)im));
-            }
-        }
-    }
-
     public static void showPrimaryVector(int count){
         if (currentPoints != null) {
             Window.removeAll(currentPoints);
