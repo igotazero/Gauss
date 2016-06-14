@@ -26,7 +26,8 @@ public class Engine {
         if (plodBolnoyFantazii == null){
             plodBolnoyFantazii = Handler.generatePBF(complexVector.length());
         }
-
+        vectorC = Handler.gauss(plodBolnoyFantazii, complexVector);
+        System.out.println(vectorC.toString());
     }
 
     public static void showPrimaryVector(int count){

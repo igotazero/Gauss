@@ -158,7 +158,7 @@ public class Window extends Application {
         doButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+                Engine.stepForward();
             }
         });
 

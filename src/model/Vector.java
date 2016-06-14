@@ -17,6 +17,14 @@ public class Vector {
         this.mas = mas;
     }
 
+    public Vector invert(){
+        Complex[] res = new Complex[length()];
+        for(int i = 0; i < length(); i++){
+            res[i] = mas[length() - i - 1];
+        }
+        return new Vector(res);
+    }
+
     public void set(Complex complex, int position){
         mas[position] = complex;
     }

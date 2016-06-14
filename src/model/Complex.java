@@ -22,10 +22,28 @@ public class Complex {
         return new Complex(re, im);
     }
 
+    public Complex subtraction(Complex complex){
+        double re = this.re - complex.re;
+        double im = this.im - complex.im;
+        return new Complex(re, im);
+    }
+
     public Complex multiply(Complex complex){
         double re = this.re * complex.re - this.im * complex.im;
         double im = this.re * complex.im + this.im * complex.re;
         return new Complex(re, im);
+    }
+
+    public Complex division(Complex complex){
+        double re = (this.re * complex.re + this.im * complex.im) /
+                (complex.re * complex.re + complex.im * complex.im);
+        double im = (this.im * complex.re - this.re * complex.im) /
+                (complex.re * complex.re + complex.im * complex.im);
+        return new Complex(re, im);
+    }
+
+    public double abs(){
+        return Math.sqrt(this.re * this.re + this.im * this.im);
     }
 
     public Complex conjugate() {
