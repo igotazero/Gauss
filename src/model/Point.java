@@ -7,7 +7,7 @@ import view.Window;
 public class Point extends Circle {
     private int x;
     private int y;
-    private final int radius = 2;
+    private final int radius = 4;
     private int displacement = Window.sizeX / 2;
 
     public Point(int x, int y){
