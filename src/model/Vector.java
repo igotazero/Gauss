@@ -1,47 +1,49 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class Vector<T> {
-    private T[] list;
+public class Vector {
+    private Complex[] mas;
 
-    public Vector(Vector<T> arg){
-        list = Arrays.copyOf(arg.getList(), arg.getList().length);
+    public Vector(int size){
+        mas = new Complex[size];
     }
 
-    public Vector(Class<T> c, int length){
-        @SuppressWarnings("unchecked")
-        final T[] a = (T[]) Array.newInstance(c, length);
-        list = a;
+    public Vector(Vector vector){
+        mas = Arrays.copyOf(vector.getMas(), vector.length());
     }
 
-    public T get(int index) {
-        return list[index];
+    public Vector(Complex[] mas){
+        this.mas = mas;
     }
 
-    public void set(int index, T type){
-        list[index] = type;
+    public void set(Complex complex, int position){
+        mas[position] = complex;
+    }
+
+    public Complex get(int position){
+        return mas[position];
+    }
+
+    public Complex[] getMas() {
+        return mas;
+    }
+
+    public void setMas(Complex[] mas) {
+        this.mas = mas;
     }
 
     public int length(){
-        return list.length;
-    }
-
-    public T[] getList() {
-        return list;
-    }
-
-    public void setList(T[] list) {
-        this.list = list;
+        return mas.length;
     }
 
     @Override
     public String toString() {
-        String res = "";
-        for (T type : list){
-            res = res + type.toString() + " ";
+        StringBuilder sb = new StringBuilder();
+        for(Complex c : mas){
+            sb.append(c.toString());
+            sb.append(" ");
         }
-        return res.trim();
+        return sb.toString().trim();
     }
 }

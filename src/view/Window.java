@@ -141,7 +141,7 @@ public class Window extends Application {
             public void handle(MouseEvent event) {
                 if (!textAreaPointsCount.isDisable()){
                     int pointsCount = Integer.parseInt(textAreaPointsCount.getText());
-                    Engine.getInstance().complexVectorGenShow(pointsCount);
+                    Engine.showPrimaryVector(pointsCount);
                 }
             }
         });
@@ -154,10 +154,9 @@ public class Window extends Application {
         doButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Engine.getInstance().multiplyMatVec();
+
             }
         });
-
 
         root.getChildren().add(axis);
         root.getChildren().add(controllers);
@@ -178,7 +177,7 @@ public class Window extends Application {
         staff.getChildren().clear();
     }
 
-    public static void main(String[] args) {
+    public static void run(String[] args){
         launch(args);
     }
 }
