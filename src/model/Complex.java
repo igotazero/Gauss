@@ -4,6 +4,8 @@ public class Complex {
     private double re;
     private double im;
 
+    public Complex(){}
+
     public Complex(double re) {
         this.re = re;
         this.im = 0;
@@ -14,7 +16,7 @@ public class Complex {
         this.im = im;
     }
 
-    public Complex add(Complex complex) {
+    public Complex plus(Complex complex) {
         double re = this.re + complex.re;
         double im = this.im + complex.im;
         return new Complex(re, im);

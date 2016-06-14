@@ -31,7 +31,7 @@ public class Handler {
         return res;
     }
 
-    public Matrix generatePBF(int size){
+    public static Matrix generatePBF(int size){
         Matrix matrix = new Matrix(size, size);
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

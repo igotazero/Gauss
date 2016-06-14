@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Arrays;
-
 public class Matrix {
     private Complex[][] mas;
 
@@ -16,6 +14,17 @@ public class Matrix {
                 mas[i][j] = get(i, j);
             }
         }
+    }
+
+    public Vector multiply(Vector vector){
+        for(int i = 0; i < vector.length(); i++){
+            Complex sum = new Complex(0);
+            for(int j = 0; j < length(); j++){
+                sum = sum.plus(get(i, j).multiply(vector.get(i)));
+            }
+            vector.set(sum, i);
+        }
+        return vector;
     }
 
     public Matrix hermitian(){
@@ -50,5 +59,18 @@ public class Matrix {
 
     public void setMas(Complex[][] mas) {
         this.mas = mas;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < columnsCount(); i++){
+            for(int j = 0; j < length(); j++){
+                sb.append(get(i, j).toString());
+                sb.append(" ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString().trim();
     }
 }
