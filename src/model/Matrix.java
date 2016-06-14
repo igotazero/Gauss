@@ -11,20 +11,21 @@ public class Matrix {
         mas = new Complex[matrix.columnsCount()][matrix.length()];
         for(int i = 0; i < matrix.columnsCount(); i++){
             for(int j = 0; j < matrix.length(); j++){
-                mas[i][j] = get(i, j);
+                mas[i][j] = matrix.get(i, j);
             }
         }
     }
 
     public Vector multiply(Vector vector){
-        for(int i = 0; i < vector.length(); i++){
+        Vector res = new Vector(vector);
+        for(int i = 0; i < columnsCount(); i++){
             Complex sum = new Complex(0);
             for(int j = 0; j < length(); j++){
-                sum = sum.plus(get(i, j).multiply(vector.get(i)));
+                sum = sum.plus(get(i, j).multiply(vector.get(j)));
             }
-            vector.set(sum, i);
+            res.set(sum, i);
         }
-        return vector;
+        return res;
     }
 
     public Matrix hermitian(){

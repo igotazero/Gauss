@@ -19,6 +19,7 @@ public class Window extends Application {
     public static int sizeY = 590;
     public Group axis;
     public static Group staff = new Group();
+    public static TextField textAreaPointsCount;
 
 
     @Override
@@ -94,7 +95,7 @@ public class Window extends Application {
         TextField textAreaFunction = new TextField();
         controllers.add(textAreaFunction, 1, 0);
 
-        TextField textAreaPointsCount = new TextField();
+        textAreaPointsCount = new TextField();
         controllers.add(textAreaPointsCount, 1, 1);
         textAreaPointsCount.setDisable(true);
 
@@ -140,6 +141,7 @@ public class Window extends Application {
                 if (!textAreaPointsCount.isDisable()){
                     int pointsCount = Integer.parseInt(textAreaPointsCount.getText());
                     Engine.showPrimaryVector(pointsCount);
+
                     doButton.setDisable(false);
                     undoButton.setDisable(false);
                     clearButton.setDisable(false);

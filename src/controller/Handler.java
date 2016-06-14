@@ -32,6 +32,8 @@ public class Handler {
     }
 
     public static Vector gauss(Matrix matrix, Vector vector){
+        matrix = new Matrix(matrix);
+        vector = new Vector(vector);
         Vector res = new Vector(vector.length());
         for(int n = 1; n < matrix.columnsCount(); n++){
             for(int i = n; i < matrix.columnsCount(); i++){
