@@ -26,10 +26,10 @@ public class Engine {
         if(n < pointsCount) {
             n++;
             vectorPhi = plodBolnoyFantazii.multiply(Handler.transform(vectorC, n));
-            System.out.println(vectorPhi.toString());
             Window.removeAll(currentPoints);
             currentPoints = Handler.convert(vectorPhi, Color.BLACK);
             Window.showShapes(currentPoints);
+            Window.showStep(n);
         }
     }
 
@@ -37,19 +37,18 @@ public class Engine {
         if(n > 0) {
             n--;
             vectorPhi = plodBolnoyFantazii.multiply(Handler.transform(vectorC, n));
-            System.out.println(vectorPhi.toString());
             Window.removeAll(currentPoints);
             currentPoints = Handler.convert(vectorPhi, Color.BLACK);
             Window.showShapes(currentPoints);
+            Window.showStep(n);
         }
     }
 
     public static void showPrimaryVector(int count){
         if (currentPoints != null) {
-            Window.removeAll(currentPoints);
+            Window.clear();
         }
         complexVector = new Vector(Handler.generateRandomComplex(count));
-        System.out.println(complexVector.toString());
         plodBolnoyFantazii = Handler.generatePBF(complexVector.length());
         vectorC = Handler.gauss(plodBolnoyFantazii, complexVector);
         currentPoints = Handler.convert(complexVector, Color.BLACK);

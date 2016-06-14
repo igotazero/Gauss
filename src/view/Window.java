@@ -20,13 +20,14 @@ public class Window extends Application {
     public Group axis;
     public static Group staff = new Group();
     public static TextField textAreaPointsCount;
-
+    public static Label counter;
 
     @Override
     public void start(Stage stage) {
+        stage.setResizable(false);
         stage.setTitle("Gauss");
         Group root = new Group();
-        final Scene scene = new Scene(root, sizeX, sizeY);
+        final Scene scene = new Scene(root, sizeX, sizeY + 40);
         scene.setFill(null);
         //?????? ????
         axis = new Group();
@@ -81,7 +82,7 @@ public class Window extends Application {
         controllers.setHgap(10);
         controllers.setVgap(10);
         controllers.setLayoutX(0);
-        controllers.setLayoutY(sizeX + 10);
+        controllers.setLayoutY(sizeX + 40);
         controllers.setLayoutX(10);
 
         Label functionLabel = new Label();
@@ -91,6 +92,10 @@ public class Window extends Application {
         Label pointCountLabel = new Label();
         pointCountLabel.setText("Points count");
         controllers.add(pointCountLabel, 0, 1);
+
+        counter = new Label("No generated points");
+        counter.setMinWidth(110);
+        controllers.add(counter, 0, 2);
 
         TextField textAreaFunction = new TextField();
         controllers.add(textAreaFunction, 1, 0);
@@ -118,6 +123,7 @@ public class Window extends Application {
         Button select2 = new Button("✔");
         controllers.add(select1, 2, 0);
         controllers.add(select2, 2, 1);
+
         //Actions for select
         select1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -155,12 +161,19 @@ public class Window extends Application {
                 doButton.setDisable(true);
                 undoButton.setDisable(true);
                 clearButton.setDisable(true);
+                counter.setText("No generated points");
             }
         });
         doButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 Engine.stepForward();
+            }
+        });
+        undoButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Engine.stepBack();
             }
         });
 
@@ -181,6 +194,10 @@ public class Window extends Application {
 
     public static void clear(){
         staff.getChildren().clear();
+    }
+
+    public static void showStep(int n){
+        counter.setText("Step: " + n);
     }
 
     public static void run(String[] args){
